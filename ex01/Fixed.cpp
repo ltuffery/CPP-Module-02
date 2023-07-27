@@ -22,7 +22,7 @@ Fixed::Fixed( const int n ) {
 }
 
 Fixed::Fixed( const float n ) {
-	this->comma = n * (1 << this->bits);
+	this->comma = roundf(n * (1 << this->bits));
 }
 
 Fixed &Fixed::operator=( const Fixed &fixed ) {
