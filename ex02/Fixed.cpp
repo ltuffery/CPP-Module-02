@@ -83,7 +83,7 @@ const Fixed Fixed::operator+( const Fixed &rigth ) const {
 }
 
 const Fixed Fixed::operator*( const Fixed &rigth ) const {
-	return Fixed(this->toFloat() * rigth.toFloat());
+	return this->toFloat() * rigth.toFloat();
 }
 
 const Fixed Fixed::operator-( const Fixed &rigth ) const {
@@ -129,8 +129,8 @@ Fixed const &Fixed::min( Fixed const &nb1, Fixed const &nb2 ) {
 	return nb1 < nb2 ? nb1 : nb2;
 }
 Fixed &Fixed::max( Fixed &nb1, Fixed &nb2 ) {
-	return nb1 < nb2 ? nb1 : nb2;
+	return nb1 > nb2 ? nb1 : nb2;
 }
 Fixed const &Fixed::max( Fixed const &nb1, Fixed const &nb2 ) {
-	return nb1 < nb2 ? nb1 : nb2;
+	return nb1 > nb2 ? nb1 : nb2;
 }
