@@ -37,12 +37,12 @@ class Fixed {
 		const Fixed operator*( const Fixed &rigth ) const;
 		const Fixed operator/( const Fixed &rigth ) const;
 
-};
+		const Fixed &operator++( void );
+		const Fixed operator++( int );
+		const Fixed &operator--( void );
+		const Fixed operator--( int );
 
-const Fixed &operator++( Fixed &fixed );
-const Fixed operator++( Fixed &fixed, int );
-const Fixed &operator--( Fixed &fixed );
-const Fixed operator--( Fixed &fixed, int );
+};
 
 std::ostream & operator<<(std::ostream & os, Fixed fixed);
 

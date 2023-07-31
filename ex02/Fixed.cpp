@@ -94,32 +94,26 @@ const Fixed Fixed::operator/( const Fixed &rigth ) const {
 	return Fixed(this->toFloat() / rigth.toFloat());
 }
 
-const Fixed &operator++( Fixed &fixed ) {
-	int rawBits = fixed.getRawBits();
-	rawBits++;
-	fixed.setRawBits(rawBits);
-	return fixed;
+const Fixed &Fixed::operator++( void ) {
+	this->comma += 1;
+	return *this;
 }
 
-const Fixed operator++( Fixed &fixed, int ) {
-	int rawBits = fixed.getRawBits();
-	++rawBits;
-	fixed.setRawBits(rawBits);
-	return fixed;
+const Fixed Fixed::operator++( int ) {
+	Fixed tmp = Fixed(*this);
+	this->comma += 1;
+	return tmp;
 }
 
-const Fixed &operator--( Fixed &fixed ) {
-	int rawBits = fixed.getRawBits();
-	rawBits--;
-	fixed.setRawBits(rawBits);
-	return fixed;
+const Fixed &Fixed::operator--( void ) {
+	this->comma -= 1;
+	return *this;
 }
 
-const Fixed operator--( Fixed &fixed, int ) {
-	int rawBits = fixed.getRawBits();
-	--rawBits;
-	fixed.setRawBits(rawBits);
-	return fixed;
+const Fixed Fixed::operator--( int ) {
+	Fixed tmp = Fixed(*this);
+	this->comma -= 1;
+	return tmp;
 }
 
 Fixed &Fixed::min( Fixed &nb1, Fixed &nb2 ) {
