@@ -5,7 +5,7 @@
 
 Fixed::Fixed( void ) {
 	std::cout << "Default constructor called" << std::endl;
-	this->comma = 0;
+	this->rawBits = 0;
 }
 
 Fixed::~Fixed( void ) {
@@ -18,11 +18,11 @@ Fixed::Fixed( const Fixed &fixed ) {
 }
 
 Fixed::Fixed( const int n ) {
-	this->comma = n << this->bits;
+	this->rawBits = n << this->fixedPoint;
 }
 
 Fixed::Fixed( const float n ) {
-	this->comma = roundf(n * (1 << this->bits));
+	this->rawBits = roundf(n * (1 << this->fixedPoint));
 }
 
 Fixed &Fixed::operator=( const Fixed &fixed ) {
@@ -30,24 +30,24 @@ Fixed &Fixed::operator=( const Fixed &fixed ) {
 	if (&fixed == this) {
 		return *this;
 	}
-	this->comma = fixed.getRawBits();
+	this->rawBits = fixed.getRawBits();
 	return *this;
 }
 
 void Fixed::setRawBits(const int raw) {
-	this->comma = raw;
+	this->rawBits = raw;
 }
 
 int Fixed::getRawBits() const {
-	return this->comma;
+	return this->rawBits;
 }
 
 int Fixed::toInt() const {
-	return this->comma >> this->bits;
+	return this->rawBits >> this->fixedPoint;
 }
 
 float Fixed::toFloat() const {
-	return roundf(this->comma) / (1 << this->bits);
+	return roundf(this->rawBits) / (1 << this->fixedPoint);
 }
 
 std::ostream & operator<<(std::ostream & os, Fixed fixed) {

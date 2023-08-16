@@ -4,8 +4,8 @@
 class Fixed {
 
 	private:
-		int comma;
-		const static int bits = 8; 
+		int rawBits;
+		const static int fixedPoint = 8; 
 
 	public:
 		Fixed( void );
